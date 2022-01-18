@@ -96,7 +96,7 @@ void Game::Menu() {
 }
 
 void Game::about() {
-	Button text(288, 288, 476, 376, &font, "Witcher themed Sokoban game.\nProject for Programowanie Obiektowe 2021-2022\nAuthors:\nFilip Marciniak\nJakub Beisert\n\nSpecial thanks to our friend Szymon Pasternak\nwho did all the beautiful graphics.\n\nPress Enter to go back to main menu.", 20, sf::Color{ 150, 120, 30 }, sf::Color{ 120, 120, 120 }, sf::Color{ 0, 230, 230 });
+	Button text(288, 288, 476, 376, &font, "Witcher themed Sokoban game.\nProject for Programowanie Obiektowe 2021-2022\nAuthors:\nFilip Marciniak\nJakub Beisert\n\nSpecial thanks to our friend Szymon Pasternak\nwho made all the beautiful graphics.\n\nPress Enter to go back to main menu.", 20, sf::Color{ 150, 120, 30 }, sf::Color{ 120, 120, 120 }, sf::Color{ 0, 230, 230 });
 	window.clear(sf::Color{160, 160, 160});
 	window.draw(text);
 	window.display();
@@ -142,19 +142,19 @@ void Game::startGame() {
 			}
 		}
 	}
-	if (startLevel("playground.txt")) {
+	if (startLevel("levels/playground.txt")) {
 		exit(0);
 	}
 	reset();
-	if (startLevel("level1.txt")) {
+	if (startLevel("levels/level1.txt")) {
 		exit(0);
 	}
 	reset();
-	if (startLevel("level2.txt")) {
+	if (startLevel("levels/level2.txt")) {
 		exit(0);
 	}
 	reset();
-	if (startLevel("level3.txt")) {
+	if (startLevel("levels/level3.txt")) {
 		exit(0);
 	}
 	reset();
@@ -225,6 +225,7 @@ void Game::processEvents(bool *RESET) {
 }
 
 void Game::uploadBoard(std::string levelFilePath) {
+	cout << "Board upload" << endl;
 	std::ifstream file(levelFilePath);
 	int x, y, temp;
 	file >> x >> y;
@@ -330,44 +331,12 @@ void Game::updateBoard() {
 	}
 
 	for (auto& finishPoint : finishPoints) {
-		switch (finishPoint.getState()) {
-		case 0:
-			finishPoint.setPicture("pictures/table.png");
-			break;
-		case 1:
-			finishPoint.setPicture("pictures/table_green.png");
-			break;
-		case 2:
-			finishPoint.setPicture("pictures/table_red.png");
-			break;
-		case 3:
-			finishPoint.setPicture("pictures/table_violet.png");
-			break;
-		case 4:
-			finishPoint.setPicture("pictures/table_yellow.png");
-			break;
-		}
+		finishPoint.setPicture();
 		window.draw(finishPoint);
 	}
 
 	for (auto& potion : potions) {
-		switch (potion.getType()) {
-		case 1:
-			potion.getPlace() ? potion.setPicture("pictures/none.png") : potion.setPicture("pictures/potion_green.png");
-			break;
-		case 2:
-			potion.getPlace() ? potion.setPicture("pictures/none.png") : potion.setPicture("pictures/potion_red.png");
-			break;
-		case 3:
-			potion.getPlace() ? potion.setPicture("pictures/none.png") : potion.setPicture("pictures/potion_violet.png");
-			break;
-		case 4:
-			potion.getPlace() ? potion.setPicture("pictures/none.png") : potion.setPicture("pictures/potion_yellow.png");
-			break;
-		default:
-			potion.getPlace() ? potion.setPicture("pictures/none.png") : potion.setPicture("pictures/potion_red.png");
-			break;
-		}
+		potion.setPicture();
 		window.draw(potion);
 	}
 

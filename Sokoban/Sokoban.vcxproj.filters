@@ -39,9 +39,6 @@
     <ClCompile Include="Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -65,21 +62,18 @@
     <ClInclude Include="Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="level1.txt">
+    <Text Include="levels\level1.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="level2.txt">
+    <Text Include="levels\level2.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="level3.txt">
+    <Text Include="levels\level3.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="playground.txt">
+    <Text Include="levels\playground.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

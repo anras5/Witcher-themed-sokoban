@@ -8,7 +8,9 @@ private:
 	int isFull;
 public:
 	FinishPoint();
+	~FinishPoint() = default;
 	int getState();
 	void setState(int state);
+	void setPicture();
 };
 

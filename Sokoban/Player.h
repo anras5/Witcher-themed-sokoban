@@ -13,12 +13,12 @@ private:
 
 public:
 	Player();
+	~Player() = default;
 	void move(const std::string& direction);
 	void undoMove();
 	void setPosition(int t_X, int t_Y);
 	sf::Vector2i getPosition();
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
-	
 	std::string getCurrentDirection() {
 		return currentDirection;
 	}

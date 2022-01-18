@@ -8,5 +8,6 @@ class Block : public Object
 private:
 public:
 	Block();
+	~Block() = default;
 };
 

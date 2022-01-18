@@ -14,7 +14,6 @@ public:
 	Object();
 	void setPosition(int t_X, int t_Y);
 	sf::Vector2i getPosition();
-	void setPicture(const std::string filepath);
+	virtual void setPicture(const std::string filepath);
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 };
-

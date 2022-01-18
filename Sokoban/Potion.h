@@ -10,6 +10,8 @@ private:
 	std::string currentDirection;
 public:
 	Potion();
+	~Potion() = default;
+	void setPicture();
 	int getType();
 	bool getPlace();
 	void setPlace(bool place);

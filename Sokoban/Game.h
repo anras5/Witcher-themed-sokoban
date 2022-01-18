@@ -10,6 +10,7 @@ class Game
 {
 public:
 	Game();
+	~Game() = default;
 	void Menu();
 private:
 

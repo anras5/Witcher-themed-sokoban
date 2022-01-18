@@ -8,6 +8,26 @@ Potion::Potion() : Object() {
 	isOnPlace = false;
 }
 
+void Potion::setPicture() {
+	switch (getType()) {
+	case 1:
+		getPlace() ? Object::setPicture("pictures/none.png") : Object::setPicture("pictures/potion_green.png");
+		break;
+	case 2:
+		getPlace() ? Object::setPicture("pictures/none.png") : Object::setPicture("pictures/potion_red.png");
+		break;
+	case 3:
+		getPlace() ? Object::setPicture("pictures/none.png") : Object::setPicture("pictures/potion_violet.png");
+		break;
+	case 4:
+		getPlace() ? Object::setPicture("pictures/none.png") : Object::setPicture("pictures/potion_yellow.png");
+		break;
+	default:
+		getPlace() ? Object::setPicture("pictures/none.png") : Object::setPicture("pictures/potion_red.png");
+		break;
+	}
+}
+
 int Potion::getType() {
 	return typeOfPotion;
 }

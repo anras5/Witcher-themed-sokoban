@@ -155,7 +155,6 @@
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="FinishPoint.cpp" />
-    <ClCompile Include="Level.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Potion.cpp" />
@@ -166,7 +165,6 @@
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="FinishPoint.h" />
-    <ClInclude Include="Level.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Potion.h" />
@@ -174,10 +172,10 @@
     <ClInclude Include="Block.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="level1.txt" />
-    <Text Include="level2.txt" />
-    <Text Include="level3.txt" />
-    <Text Include="playground.txt" />
+    <Text Include="levels\level1.txt" />
+    <Text Include="levels\level2.txt" />
+    <Text Include="levels\level3.txt" />
+    <Text Include="levels\playground.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
