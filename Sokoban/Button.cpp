@@ -2,69 +2,40 @@
 #include "Button.h"
 
 Button::Button(float t_X, float t_Y, float width, float height,
-	sf::Font* font, std::string text,
+	sf::Font* font, std::string text, int textSize,
 	sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor)
 {
 	this->buttonState = BTN_IDLE;
 
 	this->shape.setPosition(sf::Vector2f(t_X, t_Y));
 	this->shape.setSize(sf::Vector2f(width, height));
+	this->shape.setOrigin(sf::Vector2f(width / 2.f, height / 2.f));
+
+	this->idleColor = idleColor;
+	this->shape.setFillColor(this->idleColor);
 
 	this->font = font;
 	this->text.setFont(*this->font);
 	this->text.setString(text);
-	this->text.setFillColor(sf::Color::White);
-	this->text.setCharacterSize(12);
+	this->text.setFillColor(sf::Color::Black);
+	this->text.setCharacterSize(textSize);
 	this->text.setPosition(
-		this->shape.getPosition().x / 2.f - this->text.getGlobalBounds().width / 2.f,
-		this->shape.getPosition().y / 2.f - this->text.getGlobalBounds().height / 2.f
+		this->shape.getPosition().x - this->text.getGlobalBounds().width / 2.f,
+		this->shape.getPosition().y - this->text.getGlobalBounds().height / 2.f
 	);
-
-	this->idleColor = idleColor;
-	this->hoverColor = hoverColor;
-	this->activeColor = activeColor;
-
-	this->shape.setFillColor(this->idleColor);
 }
 
-const bool Button::isPressed() const
-{
-	if (this->buttonState == BTN_PRESSED) {
-		return true;
-	}
-	return false;
+void Button::setHoverState(){
+	this->buttonState = BTN_HOVER;
+	this->text.setFillColor(sf::Color::Yellow);
 }
 
-
-void Button::update(sf::Vector2f mousePos)
-{
+void Button::setIdleState(){
 	this->buttonState = BTN_IDLE;
-
-	if (this->shape.getGlobalBounds().contains(mousePos)) {
-		this->buttonState = BTN_HOVER;
-
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			this->buttonState = BTN_PRESSED;
-		}
-	}
-
-	switch (this->buttonState)
-	{
-	case BTN_IDLE:
-		this->shape.setFillColor(this->idleColor);
-		break;
-	case BTN_HOVER:
-		this->shape.setFillColor(this->hoverColor);
-		break;
-	case BTN_PRESSED:
-		this->shape.setFillColor(this->activeColor);
-		break;
-	default:
-		break;
-	}
+	this->text.setFillColor(sf::Color::Black);
 }
 
-void Button::render(sf::RenderTarget* target)
-{
-	target->draw(this->shape);
+void Button::draw(sf::RenderTarget& target, sf::RenderStates state) const{
+	target.draw(this->shape, state);
+	target.draw(this->text, state);
 }

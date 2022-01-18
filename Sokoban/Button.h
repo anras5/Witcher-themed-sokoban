@@ -1,23 +1,24 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 enum button_states {
 	BTN_IDLE = 0,
 	BTN_HOVER,
-	BTN_PRESSED
 };
 
-class Button
+class Button : public sf::Drawable
 {
 public:
+	Button() = delete;
 	Button(float t_X, float t_Y, float width, float height,
-		sf::Font* font, std::string text,
+		sf::Font* font, std::string text, int textSize,
 		sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor);
+	~Button() = default;
 
-	const bool isPressed() const;
-
-	void update(sf::Vector2f mousePos);
-	void render(sf::RenderTarget* target);
+	void setHoverState();
+	void setIdleState();
+	void draw(sf::RenderTarget& target, sf::RenderStates state)const override;
 
 
 private:

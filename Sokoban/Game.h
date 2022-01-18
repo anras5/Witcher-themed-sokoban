@@ -22,14 +22,18 @@ private:
 	std::vector<FinishPoint> finishPoints;
 
 	sf::RenderWindow window;
+	sf::Font font;
 
-	void startLevel(std::string levelFilePath);
+	void about();
+
+	void startGame();
+	int startLevel(std::string levelFilePath);
 	void uploadBoard(std::string levelFilePath);
-	void processEvents(bool RESET);
+	void processEvents(bool* RESET);
 	void reset();
 	void updateBoard();
 	void detectCollisions();
 	void detectFinishPoints();
-	void detectEndGame();
+	void detectEndGame(bool *isLevelFinished);
 };
 
