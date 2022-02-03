@@ -3,6 +3,7 @@
 The game was made by:
 - Filip Marciniak
 - Jakub Beisert 
+
 as an Object-oriented Programming project on the 3rd semester of the CS studies. 
 
 To play it, you have to download the zip which contains the ,exe game right here: 
