@@ -202,7 +202,6 @@ void Game::processEvents(bool *RESET) {
 		isPlaying = false;
 	}
 	else if (event.type == sf::Event::KeyPressed) {
-		cout << "key pressed" << endl;
 		switch (event.key.code) {
 			case sf::Keyboard::A:
 				player.move("left");
@@ -218,14 +217,12 @@ void Game::processEvents(bool *RESET) {
 				break;
 			case sf::Keyboard::R:
 				*RESET = true;
-				cout << RESET << endl;
 				break;
 		}
 	}
 }
 
 void Game::uploadBoard(std::string levelFilePath) {
-	cout << "Board upload" << endl;
 	std::ifstream file(levelFilePath);
 	int x, y, temp;
 	file >> x >> y;
@@ -323,7 +320,6 @@ void Game::detectEndGame(bool *isLevelFinished) {
 }
 
 void Game::updateBoard() {
-	//cout << player.getPosition().x << " " << player.getPosition().y << endl;
 
 	for (auto& block : blocks) {
 		block.setPicture("pictures/block.png");
